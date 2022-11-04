@@ -1,0 +1,22 @@
+     const characterID = document.createElement("p")
+        htmlOutput.append(characterID)
+        characterID.innerText = `ID: ${RMCharacter.id}`
+        
+        // This creates a variable that will create a paragraph tag within the html.
+        const characterName = document.createElement("p")
+        // This appends that variable to the div within the html, creating a paragraph tag within the div.
+        htmlOutput.append(characterName)
+        // This sets the text inside the created tag to be equal to the name data
+        characterName.innerText = `Character name: ${RMCharacter.name}`
+        
+        const characterImage = document.createElement("img")
+        characterImage.setAttribute("src", RMCharacter.image)
+        htmlOutput.append(characterImage)
+    
+        const characterSpecies = document.createElement("p")
+        htmlOutput.append(characterSpecies)
+        characterSpecies.innerText = `Species: ${RMCharacter.species}`
+        
+        const characterStatus = document.createElement("p")
+        htmlOutput.append(characterStatus)
+        characterStatus.innerText = `Status: ${RMCharacter.status}`

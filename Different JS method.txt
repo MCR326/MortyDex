@@ -1,0 +1,59 @@
+async function fetchRequest() {
+    const res = await fetch(`https://rickandmortyapi.com/api/character`)
+    const apiData = await res.json()
+    return (apiData)
+} 
+
+// This waits for the entire page to load before the data is fetched.
+document.addEventListener("DOMContentLoaded", async () => {
+    // Creates an array to store the data from the API in.
+    let apiData = []
+    // This runs the fetch request function, and if it catches an error it will log it to the console.
+    try {
+        apiData = await fetchRequest()
+    } catch (error) {
+        console.log(error)
+    }
+
+    console.log(apiData)
+
+    for(let {name, image, status, species} of apiData.results) {
+         // This creates a variable that will create a paragraph tag within the html.
+        const characterName = document.createElement("p")
+        // This appends that variable to the div within the html, creating a paragraph tag within the div.
+        htmlOutput.append(characterName)
+        // This sets the text inside the created tag to be equal to the name data
+        characterName.innerText = `Character name: ${name}`
+        
+        const characterImage = document.createElement("img")
+        characterImage.setAttribute("src", image)
+        htmlOutput.append(characterImage)
+
+        const characterSpecies = document.createElement("p")
+        htmlOutput.append(characterSpecies)
+        characterSpecies.innerText = `Species: ${species}`
+        
+        const characterStatus = document.createElement("p")
+        htmlOutput.append(characterStatus)
+        characterStatus.innerText = `Status: ${status}`
+        }
+    // // This creates a variable that will create a paragraph tag within the html.
+    // const characterName = document.createElement("p")
+    // // This appends that variable to the div within the html, creating a paragraph tag within the div.
+    // htmlOutput.append(characterName)
+    // // This sets the text inside the created tag to be equal to the name data
+    // characterName.innerText = `Character name: ${apiData.name}`
+    
+    // const characterImage = document.createElement("img")
+    // characterImage.setAttribute("src", apiData.image)
+    // htmlOutput.append(characterImage)
+
+    // const characterSpecies = document.createElement("p")
+    // htmlOutput.append(characterSpecies)
+    // characterSpecies.innerText = `Species: ${apiData.species}`
+    
+    // const characterStatus = document.createElement("p")
+    // htmlOutput.append(characterStatus)
+    // characterStatus.innerText = `Status: ${apiData.status}`
+
+})
